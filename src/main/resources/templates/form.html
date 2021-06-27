@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="form">
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="form.js"></script>
+</head>
+<body>
+
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <h1>Contact Us</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 offset-md-6">
+            <form ng-controller="Form" name="form" ng-submit="send(data)">
+                <div class="form-group">
+                    <label for="requestKind">Kind of request</label>
+                    <select class="form-control" id="requestKind" name="requestKind"
+                            ng-model="selected"
+                            ng-options="opt.value for opt in opts track by opt.id">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="policyNumber">Policy number</label>
+                    <input type="text" class="form-control" id="policyNumber" placeholder="0420..." name="number" ng-model="data.number" ng-pattern="alphanumeric" required>
+                    <span class="error" ng-show="form.number.$dirty && form.number.$invalid">The policy has invalid format</span>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Jan" ng-model="data.name" ng-pattern="alpha" required>
+                    <span class="error" ng-show="form.name.$dirty && form.name.$invalid">The name has invalid format</span>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input type="text" class="form-control" id="surname" placeholder="Novak" name="surname" ng-model="data.surname" ng-pattern="alpha" required>
+                    <span class="error" ng-show="form.surname.$dirty && form.surname.$invalid">The surname has invalid format</span>
+                </div>
+                <div class="form-group">
+                    <label for="request">Your request</label>
+                    <textarea class="form-control" id="request" rows="6" name="request" ng-model="data.request" ng-maxlength="2000" required></textarea>
+                    <span class="error" ng-show="form.request.$dirty && form.request.$invalid">Your request is too long</span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" id="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
