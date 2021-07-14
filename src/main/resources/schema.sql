@@ -1,7 +1,7 @@
-DROP TABLE Forms;
-DROP SEQUENCE forms_id_seq;
-DROP TABLE Options;
-DROP SEQUENCE options_id_seq;
+DROP TABLE Forms IF EXISTS;
+DROP SEQUENCE forms_id_seq IF EXISTS;
+DROP TABLE Options IF EXISTS;
+DROP SEQUENCE options_id_seq IF EXISTS;
 
 CREATE SEQUENCE options_id_seq START 1;
 
